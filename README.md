@@ -23,6 +23,8 @@ import * as Events from '@frampton/events';
 
 There are three methods for creating event streams exposed by frampton-events. The first on these is onEvent. It takes an event name and a HTMLElement to listen for events on. All events are delegated. The only listeners ever attached to the DOM are attached to the documentElement or the window.
 
+The underlying event stream is a Frampton.Data.Signal. Checkout @frampton/core for more information.
+
 ```
 import { onEvent } from '@frampton/events';
 
@@ -31,6 +33,8 @@ const clicks: Signal<Event> =
   onEvent('click', document.getElementById('my-id'));
 ```
 
+#### onValue
+
 From here we can listen for events.
 
 ```
@@ -38,6 +42,8 @@ clicks.onValue((evt: Event): void => {
   // do something
 });
 ```
+
+#### map
 
 We can map events. There are a few utils provided for common transformations.
 
@@ -52,6 +58,8 @@ const inputValues: Signal<string> =
     .map(eventValue);
 ```
 
+#### filter
+
 We can also filter events.
 
 With this filter the event only continues on the stream if the event target contains an element matching the given selector.
@@ -63,6 +71,19 @@ import { onEvent, containsSelector } from '@frampton/events';
 const inputValues: Signal<Event> =
   onEvent('input', document.getElementById('my-input'))
     .map(containsSelector('.active'));
+```
+
+#### debounce
+
+A common need is debouncing events. One of many methods on Frampton.Data.Signal.
+
+```
+import { onEvent } from '@frampton/events';
+
+
+const inputValues: Signal<Event> =
+  onEvent('input', document.getElementById('my-input'))
+    .debounce(100);
 ```
 
 
