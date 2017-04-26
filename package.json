@@ -1,6 +1,6 @@
 {
   "name": "@frampton/events",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "./dist/bundles/events.js",
   "typings": "./dist/index.d.ts",
@@ -37,7 +37,7 @@
     "webpack": "^2.4.1"
   },
   "peerDependencies": {
-    "@frampton/core": "^0.0.6",
-    "@frampton/style": "^0.0.4"
+    "@frampton/core": "~0.0.6",
+    "@frampton/style": "~0.0.5"
   }
 }
